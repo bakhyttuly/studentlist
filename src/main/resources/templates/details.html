@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title>Task Details</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="card shadow w-50 mx-auto">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Task Details</h3>
+      <p><strong>ID:</strong> <span th:text="${task.id}"></span></p>
+      <p><strong>Name:</strong> <span th:text="${task.name}"></span></p>
+      <p><strong>Deadline:</strong> <span th:text="${task.deadlineDate}"></span></p>
+      <p><strong>Completed:</strong>
+        <span th:text="${task.completed ? 'Yes' : 'No'}"></span>
+      </p>
+      <div class="text-end">
+        <a href="/" class="btn btn-secondary">Back</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

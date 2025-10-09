@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Tasks</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="card shadow">
+        <div class="card-body">
+            <h3 class="text-center mb-4">All Tasks</h3>
+            <div class="text-end mb-3">
+                <a href="/add" class="btn btn-success">Add New Task</a>
+            </div>
+
+            <table class="table table-bordered align-middle text-center">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Deadline</th>
+                    <th>Completed</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="t : ${tasks}">
+                    <td th:text="${t.id}"></td>
+                    <td th:text="${t.name}"></td>
+                    <td th:text="${t.deadlineDate}"></td>
+                    <td th:text="${t.completed ? 'Yes' : 'No'}"
+                        th:classappend="${t.completed} ? 'text-success' : 'text-danger'"></td>
+                    <td>
+                        <a th:href="@{'/details/' + ${t.id}}" class="btn btn-info btn-sm">Details</a>
+                        <a th:href="@{'/edit/' + ${t.id}}" class="btn btn-warning btn-sm">Edit</a>
+                        <a th:href="@{'/delete/' + ${t.id}}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                <tr th:if="${tasks.isEmpty()}">
+                    <td colspan="5" class="text-muted">No tasks added yet</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
