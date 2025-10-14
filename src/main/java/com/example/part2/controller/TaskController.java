@@ -41,24 +41,11 @@ public class TaskController {
         return "details";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable Long id, Model model) {
-        Optional<Task> task = tasks.stream().filter(t -> t.getId().equals(id)).findFirst();
-        task.ifPresent(value -> model.addAttribute("task", value));
-        return "edit";
-    }
-
     @PostMapping("/edit/{id}")
     public String editTask(@PathVariable Long id, @ModelAttribute Task updatedTask) {
         tasks.removeIf(t -> t.getId().equals(id));
         updatedTask.setId(id);
         tasks.add(updatedTask);
-        return "redirect:/";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteTask(@PathVariable Long id) {
-        tasks.removeIf(t -> t.getId().equals(id));
         return "redirect:/";
     }
 }
