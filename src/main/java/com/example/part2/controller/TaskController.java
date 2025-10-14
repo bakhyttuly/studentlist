@@ -41,11 +41,4 @@ public class TaskController {
         return "details";
     }
 
-    @PostMapping("/edit/{id}")
-    public String editTask(@PathVariable Long id, @ModelAttribute Task updatedTask) {
-        tasks.removeIf(t -> t.getId().equals(id));
-        updatedTask.setId(id);
-        tasks.add(updatedTask);
-        return "redirect:/";
-    }
 }
