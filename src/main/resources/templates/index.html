@@ -33,8 +33,6 @@
                         th:classappend="${t.completed} ? 'text-success' : 'text-danger'"></td>
                     <td>
                         <a th:href="@{'/details/' + ${t.id}}" class="btn btn-info btn-sm">Details</a>
-                        <a th:href="@{'/edit/' + ${t.id}}" class="btn btn-warning btn-sm">Edit</a>
-                        <a th:href="@{'/delete/' + ${t.id}}" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
                 <tr th:if="${tasks.isEmpty()}">
